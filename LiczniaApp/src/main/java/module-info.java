@@ -11,6 +11,7 @@ module org.example.liczniaapp {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires jdk.jdi;
+    requires java.desktop;
 
     opens org.example.liczniaapp to javafx.fxml;
     exports org.example.liczniaapp;

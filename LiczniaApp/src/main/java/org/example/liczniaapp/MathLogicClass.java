@@ -2,6 +2,7 @@ package org.example.liczniaapp;
 
 import com.sun.jdi.DoubleValue;
 
+import java.awt.*;
 import java.lang.constant.ConstantDesc;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,7 +19,7 @@ public class MathLogicClass {
     private Integer numberForAllTable;
     private Integer numberLowerForNumber = 1;
     private Integer numberUperForNumber = 9;
-
+    private String taskString;
     //Getery oraz setery dla prywatnych wartości
     public Integer getnumberForAllTable() {
         return this.numberForAllTable;
@@ -73,10 +74,14 @@ public class MathLogicClass {
        Collections.shuffle(colectionRangeSecondNumberRandom);
 //        System.out.println(colectionRangeSecondNumberRandom);
     }
+    public void createColectionRangeForFirstAndSekondNumberRandom(){
+        createColectionRangeFirstNumberRandom();
+        createColectionRangeSecondNumberRandom(Boolean.TRUE);
+    }
 
     //Wypeniliśmy już 2 listy z liczbami losowymi z podanego zakresu
     //Teraz tworze generator pierwszej liczby
-    public String generatotTasks(){
+    public String generatotTasksString(){
         Integer liczba1 = 0;
         if(colectionRangeFirstNumberRandom.size()>1){
             liczba1 = colectionRangeFirstNumberRandom.getFirst();
@@ -86,8 +91,6 @@ public class MathLogicClass {
             liczba1 = colectionRangeFirstNumberRandom.getFirst();
             createColectionRangeFirstNumberRandom();
         }
-        else if (colectionRangeFirstNumberRandom.isEmpty()) {
-            createColectionRangeFirstNumberRandom();}
         Integer liczba2 = 0;
         if(!colectionRangeSecondNumberRandom.isEmpty()){
             liczba2 = colectionRangeSecondNumberRandom.getFirst();
@@ -95,9 +98,23 @@ public class MathLogicClass {
         }
         else{createColectionRangeSecondNumberRandom(Boolean.TRUE);}
 
-        String zadanie = liczba1+" * "+ liczba2;
-        System.out.println(zadanie);
-        return zadanie;
+        taskString = liczba1+" * "+ liczba2;
+        return taskString;
+    }
+    public Boolean functionCheckTaskBolean (String zadanieInput, String userInput){
+        Boolean resultOfTesting = Boolean.FALSE;
+        Integer number1= Integer.parseInt(String.valueOf(zadanieInput.charAt(0)));
+        Integer number2 = Integer.parseInt(String.valueOf(zadanieInput.charAt(4)));
+        Integer resultOfMultiplication = number1 * number2;
+        Integer lenghOfUserInput = userInput.length();
+        Boolean isnumbersInUserInput = userInput.matches("\\d+");
+        if ((lenghOfUserInput==1 || lenghOfUserInput ==2) && isnumbersInUserInput){
+            if (resultOfMultiplication == Integer.getInteger(userInput)){
+                resultOfTesting = Boolean.TRUE;
+            }
+        }
+
+        return resultOfTesting;
     }
 
 

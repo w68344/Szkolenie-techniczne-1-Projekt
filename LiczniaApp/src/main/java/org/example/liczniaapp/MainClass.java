@@ -2,11 +2,14 @@ package org.example.liczniaapp;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MainClass extends Application {
     @Override
@@ -22,12 +25,14 @@ public class MainClass extends Application {
     public static void main(String[] args) {
 //        launch();
         MathLogicClass Logika = new MathLogicClass();
-        Logika.createColectionRangeFirstNumberRandom();
-        Logika.createColectionRangeSecondNumberRandom(Boolean.TRUE);
-        Logika.generatotTasks();
+        Logika.createColectionRangeForFirstAndSekondNumberRandom();
+        String str = Logika.generatotTasksString();
+        System.out.println(str);
+        Scanner scaner = new Scanner(System.in);
+        String userInput = scaner.nextLine();
+        System.out.println(Logika.functionCheckTaskBolean(str,userInput));
 
         System.exit(0);
-
 
     }
 }
