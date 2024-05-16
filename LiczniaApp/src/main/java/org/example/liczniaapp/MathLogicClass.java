@@ -20,6 +20,7 @@ public class MathLogicClass {
     private Integer numberLowerForNumber = 1;
     private Integer numberUperForNumber = 9;
     private String taskString;
+
     //Getery oraz setery dla prywatnych wartości
     public Integer getnumberForAllTable() {
         return this.numberForAllTable;
@@ -67,57 +68,58 @@ public class MathLogicClass {
             for (int i = 1; i < 10; i++) {
                 colectionRangeSecondNumberRandom.add(i);
             }
-        }
-        else {
+        } else {
             System.out.println("No implement for that system of numbers");
         }
-       Collections.shuffle(colectionRangeSecondNumberRandom);
+        Collections.shuffle(colectionRangeSecondNumberRandom);
 //        System.out.println(colectionRangeSecondNumberRandom);
     }
-    public void createColectionRangeForFirstAndSekondNumberRandom(){
+
+    public void createColectionRangeForFirstAndSekondNumberRandom() {
         createColectionRangeFirstNumberRandom();
         createColectionRangeSecondNumberRandom(Boolean.TRUE);
     }
 
     //Wypeniliśmy już 2 listy z liczbami losowymi z podanego zakresu
     //Teraz tworze generator pierwszej liczby
-    public String generatotTasksString(){
+    public String generatotTasksString() {
         Integer liczba1 = 0;
-        if(colectionRangeFirstNumberRandom.size()>1){
+        if (colectionRangeFirstNumberRandom.size() > 1) {
             liczba1 = colectionRangeFirstNumberRandom.getFirst();
             colectionRangeFirstNumberRandom.removeFirst();
-        }
-        else if (colectionRangeFirstNumberRandom.size()==1) {
+        } else if (colectionRangeFirstNumberRandom.size() == 1) {
             liczba1 = colectionRangeFirstNumberRandom.getFirst();
             createColectionRangeFirstNumberRandom();
         }
         Integer liczba2 = 0;
-        if(!colectionRangeSecondNumberRandom.isEmpty()){
+        if (!colectionRangeSecondNumberRandom.isEmpty()) {
             liczba2 = colectionRangeSecondNumberRandom.getFirst();
             colectionRangeSecondNumberRandom.removeFirst();
+        } else {
+            createColectionRangeSecondNumberRandom(Boolean.TRUE);
         }
-        else{createColectionRangeSecondNumberRandom(Boolean.TRUE);}
 
-        taskString = liczba1+" * "+ liczba2;
+        taskString = liczba1 + " * " + liczba2;
         return taskString;
     }
-    public Boolean functionCheckTaskBolean (String zadanieInput, String userInput){
+
+    //Funkcja sprawdzajáca czy podana odpowied od uzytkownika jest prawidwoła
+    public Boolean functionCheckTaskBolean(String zadanieInput, String userInput) {
         Boolean resultOfTesting = Boolean.FALSE;
-        Integer number1= Integer.parseInt(String.valueOf(zadanieInput.charAt(0)));
+        Integer number1 = Integer.parseInt(String.valueOf(zadanieInput.charAt(0)));
         Integer number2 = Integer.parseInt(String.valueOf(zadanieInput.charAt(4)));
         Integer resultOfMultiplication = number1 * number2;
         Integer lenghOfUserInput = userInput.length();
         Boolean isnumbersInUserInput = userInput.matches("\\d+");
-        if ((lenghOfUserInput==1 || lenghOfUserInput ==2) && isnumbersInUserInput){
-            if (resultOfMultiplication == Integer.getInteger(userInput)){
+        System.out.println("Result Of Multiplication: "+resultOfMultiplication);
+        System.out.println("Liczba podana uzytkownikem: "+Integer.getInteger(userInput));
+        if ((lenghOfUserInput == 1 || lenghOfUserInput == 2) && isnumbersInUserInput) {
+            if (resultOfMultiplication == Integer.parseInt(userInput)) {
                 resultOfTesting = Boolean.TRUE;
             }
         }
-
         return resultOfTesting;
     }
-
-
 
 
 }

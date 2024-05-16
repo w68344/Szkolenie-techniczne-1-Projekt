@@ -12,7 +12,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Menu">
             <items>
-              <MenuItem mnemonicParsing="false" text="Zapisz i zamkni" />
+              <MenuItem fx:id="menubarSaveAndClose" mnemonicParsing="false" onAction="#saveAndClose" text="Zapisz i zamkni" />
                   <MenuItem mnemonicParsing="false" text="Info" />
                   <MenuItem mnemonicParsing="false" text="Zmień styl gry" />
             </items>
@@ -55,16 +55,16 @@
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnStartGame" mnemonicParsing="false" text="Start Game">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Button>
                   <Label fx:id="lblTask">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
+                  <Button fx:id="btnStartGame" mnemonicParsing="false" onAction="#startTheGame"  text="Start Game">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
                </children></VBox>
          </children>
       </HBox>
@@ -78,7 +78,7 @@
             <HBox alignment="CENTER" prefHeight="318.0" prefWidth="549.0" spacing="10.0">
                <children>
                   <TextField fx:id="txtAnswer" prefHeight="47.0" prefWidth="259.0" />
-                  <Button fx:id="btnSendAnswer" mnemonicParsing="false" text="Button">
+                  <Button fx:id="btnSendAnswer" mnemonicParsing="false" text="Zapisz">
                      <font>
                         <Font size="24.0" />
                      </font>

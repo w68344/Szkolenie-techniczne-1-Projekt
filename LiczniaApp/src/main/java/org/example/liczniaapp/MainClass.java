@@ -23,14 +23,7 @@ public class MainClass extends Application {
     }
 
     public static void main(String[] args) {
-//        launch();
-        MathLogicClass Logika = new MathLogicClass();
-        Logika.createColectionRangeForFirstAndSekondNumberRandom();
-        String str = Logika.generatotTasksString();
-        System.out.println(str);
-        Scanner scaner = new Scanner(System.in);
-        String userInput = scaner.nextLine();
-        System.out.println(Logika.functionCheckTaskBolean(str,userInput));
+        launch();
 
         System.exit(0);
 
