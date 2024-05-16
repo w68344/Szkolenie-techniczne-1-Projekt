@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="750.0" prefWidth="850.0" spacing="20.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.liczniaapp.MainController">
+   <children>
+      <MenuBar>
+        <menus>
+          <Menu mnemonicParsing="false" text="Menu">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Zapisz i zamkni" />
+                  <MenuItem mnemonicParsing="false" text="Info" />
+                  <MenuItem mnemonicParsing="false" text="Zmień styl gry" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Gra">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Zapisz obecną gre" />
+                  <MenuItem mnemonicParsing="false" text="Wybirz poziom (automatycznie)" />
+                  <MenuItem mnemonicParsing="false" text="Wybierz poziom (ręcznie)" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Użytkownik">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Info Użytkownika" />
+                  <MenuItem mnemonicParsing="false" text="Dodaj Uzytkownika" />
+                  <MenuItem mnemonicParsing="false" text="Wybierz Uzytkownika" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <HBox prefHeight="400.0" prefWidth="850.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="367.0" prefWidth="294.0" spacing="10.0">
+               <children>
+                  <Label fx:id="lblPunctsPlayer" contentDisplay="CENTER" prefHeight="150.0" prefWidth="294.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblGameLevel" prefHeight="150.0" prefWidth="293.0">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+            <VBox alignment="CENTER" prefHeight="367.0" prefWidth="556.0" spacing="10.0">
+               <children>
+                  <Label fx:id="lblTimer">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnStartGame" mnemonicParsing="false" text="Start Game">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+                  <Label fx:id="lblTask">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
+               </children></VBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="350.0" prefWidth="850.0">
+         <children>
+            <ImageView fx:id="imgMem" fitHeight="300.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../logo300300png.png" />
+               </image>
+            </ImageView>
+            <HBox alignment="CENTER" prefHeight="318.0" prefWidth="549.0" spacing="10.0">
+               <children>
+                  <TextField fx:id="txtAnswer" prefHeight="47.0" prefWidth="259.0" />
+                  <Button fx:id="btnSendAnswer" mnemonicParsing="false" text="Button">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" left="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>
