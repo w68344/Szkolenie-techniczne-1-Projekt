@@ -8,6 +8,7 @@ import javafx.scene.control.TextField;
 
 import javax.swing.text.StyledEditorKit;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class MainController {
     //Tworzenia odpowiednich zmiennych zwądzanych z objektami GUI (grafic user interfejse)
@@ -42,8 +43,9 @@ public class MainController {
         }
 
     }
-
+    //Fukcja pobierania odpowiedzi z pola uzytkownika;
+    public void getAnswerFromUser (){}
+    //Fukcja do zapisywania dannych do baz dannych oraz zamknięcie aplikacji
     public void saveAndClose (){System.exit(0);}
-
 
 }
