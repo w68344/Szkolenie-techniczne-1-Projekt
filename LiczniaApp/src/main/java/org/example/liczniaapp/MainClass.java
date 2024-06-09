@@ -24,8 +24,10 @@ public class MainClass extends Application {
     }
 
     public static void main(String[] args) throws InterruptedException {
+
         launch();
 
+//dzielenie gry na 2 wątki w celu uzyskania niezleżności pracy analiztora odpowidzi od timera w grze
 //        Runnable timerProcess = new Runnable() {
 //            @Override
 //            public void run() {
@@ -55,7 +57,7 @@ public class MainClass extends Application {
 //        logikaThread.start();
 
 
-
+//Sprawdzenie logiki w konsoli
 //        MathLogicClass Logika = new MathLogicClass();
 //        Logika.createColectionRangeForFirstAndSekondNumberRandom();
 //        Logika.generatotTasksString();

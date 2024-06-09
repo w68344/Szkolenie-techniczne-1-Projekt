@@ -49,7 +49,7 @@ public class LevelSettingsWindowController {
         }
         catch (Exception e){
             System.out.println("Wypadł wyjątek w: public void updateValuesFunkctionLevelSettingsWindow w numberFrom_TextAreaFrom_Integer");
-            numberFrom_TextAreaFrom_Integer = 0;
+            numberFrom_TextAreaFrom_Integer = 1;
         }
         String numberFrom_TextAreaTo = textAreaTo.getText();
         Integer numberFrom_TextAreaTo_Integer;
@@ -58,7 +58,7 @@ public class LevelSettingsWindowController {
         }
         catch (Exception e) {
             System.out.println("Wypadł wyjątek w: public void updateValuesFunkctionLevelSettingsWindow w numberFrom_TextAreaTo_Integer");
-            numberFrom_TextAreaTo_Integer = 0;
+            numberFrom_TextAreaTo_Integer = 9;
         }
         String numberFrom_textAreaNumber2 = textAreaNumber2.getText();
         Integer numberFrom_textAreaNumber2_Integer;

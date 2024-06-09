@@ -27,7 +27,7 @@
           <Menu mnemonicParsing="false" text="Użytkownik">
             <items>
               <MenuItem mnemonicParsing="false" text="Info Użytkownika" />
-                  <MenuItem mnemonicParsing="false" text="Dodaj Uzytkownika" />
+                  <MenuItem fx:id="NewWindowForCreateNewUserMenuBtn" mnemonicParsing="false" onAction="#createNewWindowForCreateNewUserMenuBtn" text="Dodaj Uzytkownika" />
                   <MenuItem mnemonicParsing="false" text="Wybierz Uzytkownika" />
             </items>
           </Menu>
@@ -35,16 +35,24 @@
       </MenuBar>
       <HBox prefHeight="400.0" prefWidth="850.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="367.0" prefWidth="294.0" spacing="10.0">
+            <VBox alignment="CENTER" prefHeight="367.0" prefWidth="294.0" spacing="5.0">
                <children>
-                  <Label fx:id="lblPunctsPlayer" contentDisplay="CENTER" prefHeight="150.0" prefWidth="294.0">
+                  <Label fx:id="lblPunctsPlayer" contentDisplay="RIGHT" prefHeight="150.0" prefWidth="294.0" text="Poprawno/Błędnie = 0/0" textAlignment="CENTER">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblGameLevel" alignment="CENTER" prefHeight="150.0" prefWidth="293.0" text="User Lvl = 0" textAlignment="CENTER">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lblGameLevel" prefHeight="150.0" prefWidth="293.0">
+                  <Label fx:id="userNameLbl" alignment="CENTER" prefHeight="134.0" prefWidth="294.0" text="User: Nikita Riabchii" textAlignment="CENTER">
                      <font>
-                        <Font size="36.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
                </children></VBox>
