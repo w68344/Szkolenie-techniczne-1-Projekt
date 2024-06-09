@@ -11,9 +11,9 @@ public class MathLogicClass {
     private ArrayList<Integer> colectionRangeSecondNumberRandom = new ArrayList<>(10);
 
     //Główne zmienne które będą tworzycz parametry skomplikowaności zdań
-    private Integer numberForAllTable;
-    private Integer numberLowerForNumber = 1;
-    private Integer numberUperForNumber = 9;
+    private static Integer numberForAllTable;
+    private static Integer numberLowerForNumber = 1;
+    private static Integer numberUperForNumber = 9;
     private String taskString;
     private String valuesFromUser;
     private Integer valuesFromUserIntegerWithChek;
@@ -21,7 +21,9 @@ public class MathLogicClass {
     //Getery oraz setery dla prywatnych wartości
 
     public void setValuesFromUser(String valuesFromUser) {
-        this.valuesFromUser = valuesFromUser;
+        if (valuesFromUser == null){ this.valuesFromUser = "0";}
+        else {this.valuesFromUser = valuesFromUser;}
+
     }
 
     public Integer getValuesFromUserIntegerWithChek() {
@@ -44,16 +46,26 @@ public class MathLogicClass {
             System.out.println("W odpowiedzi odnalezono litery, muszą być tylko liczby.");
             return valuesFromUserIntegerWithChek = 0;
         }
+        System.out.println("Liczba od funkcji setValuesFromUserIntegerWithChek: "+ valuesFromUserIntegerWithChek);
+
         return valuesFromUserIntegerWithChek = Integer.parseInt(getVirableValuesFromUser());
+
     }
 
     public String getTaskString() {return taskString;}
-    public String getVirableValuesFromUser(){return valuesFromUser;}
+    public String getVirableValuesFromUser() {
+        if (valuesFromUser == null) {
+            return valuesFromUser = "0";
+        } else {
+            return valuesFromUser;
+        }
+    };
+
     public Integer getnumberForAllTable() {
         return this.numberForAllTable;
     }
 
-    public Integer setnumberForAllTable(Integer NumberForAllTable) {
+    public Integer setnumberForAllTable(Integer NumberForAllTable ) {
         this.numberForAllTable = NumberForAllTable;
         return this.numberForAllTable;
     }
@@ -160,6 +172,16 @@ public class MathLogicClass {
             resultOfTesting = Boolean.TRUE;}
         System.out.println("ResultOfTesting: " + resultOfTesting);
         return resultOfTesting;
+    }
+    //funkcja zwraca domyślne parametry gry oraz informuje nas o tym w konsoli
+    public void setDefoltValuesForTaskGenerator(){
+
+        setnumberLowerForNumber(1);
+        System.out.println("Parametr setnumberLowerForNumber zostaw udomyślniony");
+        setnumberUperForNumber(9);
+        System.out.println("Parametr setnumberUperForNumber zostaw udomyślniony");
+        setnumberForAllTable(null);
+        System.out.println("Parametr setnumberForAllTable zostaw udomyślniony");
     }
 
 

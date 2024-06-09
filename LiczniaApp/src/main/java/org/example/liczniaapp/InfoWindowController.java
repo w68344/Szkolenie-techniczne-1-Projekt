@@ -19,7 +19,7 @@ public class InfoWindowController {
         FXMLLoader fxmlLoader = new FXMLLoader(MainClass.class.getResource("InfoWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 750);
         stage.getIcons().add(new Image("logo300300Lipng.png"));
-        stage.setTitle("LiczniaApp");
+        stage.setTitle("Info about Licznia App");
         stage.setScene(scene);
         stage.show();
     }
