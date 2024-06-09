@@ -1,13 +1,8 @@
 package org.example.liczniaapp;
 
-import com.sun.jdi.DoubleValue;
-
-import java.awt.*;
-import java.lang.constant.ConstantDesc;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.PrimitiveIterator;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MathLogicClass {
     //Tworzenie dwóch zbiorów z których bandą kombinowane zdania
@@ -20,8 +15,40 @@ public class MathLogicClass {
     private Integer numberLowerForNumber = 1;
     private Integer numberUperForNumber = 9;
     private String taskString;
+    private String valuesFromUser;
+    private Integer valuesFromUserIntegerWithChek;
 
     //Getery oraz setery dla prywatnych wartości
+
+    public void setValuesFromUser(String valuesFromUser) {
+        this.valuesFromUser = valuesFromUser;
+    }
+
+    public Integer getValuesFromUserIntegerWithChek() {
+        return valuesFromUserIntegerWithChek;
+    }
+    public Integer setValuesFromUserIntegerWithOutChek(){
+        this.valuesFromUserIntegerWithChek = Integer.parseInt(getVirableValuesFromUser());
+        return valuesFromUserIntegerWithChek;
+    }
+    //Funkcja sprawdzająca poprawność wpisywania dannych użytkownikem oraz convertująca string do Integera
+    public Integer setValuesFromUserIntegerWithChek(String valueFromUserString){
+
+        Pattern pattern = Pattern.compile(".*[a-zA-Z]+.*");
+        Matcher matcher = pattern.matcher(valueFromUserString);
+        if (valueFromUserString.length()>3){
+            System.out.println("Za długa odpowiedż");
+            return valuesFromUserIntegerWithChek = 0;
+        }
+        else if (matcher.matches()){
+            System.out.println("W odpowiedzi odnalezono litery, muszą być tylko liczby.");
+            return valuesFromUserIntegerWithChek = 0;
+        }
+        return valuesFromUserIntegerWithChek = Integer.parseInt(getVirableValuesFromUser());
+    }
+
+    public String getTaskString() {return taskString;}
+    public String getVirableValuesFromUser(){return valuesFromUser;}
     public Integer getnumberForAllTable() {
         return this.numberForAllTable;
     }
@@ -81,7 +108,7 @@ public class MathLogicClass {
     }
 
     //Wypeniliśmy już 2 listy z liczbami losowymi z podanego zakresu
-    //Teraz tworze generator pierwszej liczby
+    //Teraz tworze generator zadania
     public String generatotTasksString() {
         Integer liczba1 = 0;
         if (colectionRangeFirstNumberRandom.size() > 1) {
@@ -100,24 +127,38 @@ public class MathLogicClass {
         }
 
         taskString = liczba1 + " * " + liczba2;
+        System.out.println("Zadanie: "+ taskString);
         return taskString;
     }
 
+    //Fukcja dla odczytu wartości od uzytkownika
+
+    public String getValuesFromUser ()
+    {
+        Scanner scaner = new Scanner(System.in);
+        System.out.println("Podaj odpoviedż: ");
+        setValuesFromUser(scaner.next());
+        setValuesFromUserIntegerWithChek(getVirableValuesFromUser());
+//        System.out.println("Odpowiedż podana użytkownikem: " + valuesFromUser);
+
+
+       return valuesFromUser ;
+    }
+
     //Funkcja sprawdzajáca czy podana odpowied od uzytkownika jest prawidwoła
-    public Boolean functionCheckTaskBolean(String zadanieInput, String userInput) {
+    public Boolean functionCheckTaskBolean() {
         Boolean resultOfTesting = Boolean.FALSE;
-        Integer number1 = Integer.parseInt(String.valueOf(zadanieInput.charAt(0)));
-        Integer number2 = Integer.parseInt(String.valueOf(zadanieInput.charAt(4)));
-        Integer resultOfMultiplication = number1 * number2;
-        Integer lenghOfUserInput = userInput.length();
-        Boolean isnumbersInUserInput = userInput.matches("\\d+");
-        System.out.println("Result Of Multiplication: "+resultOfMultiplication);
-        System.out.println("Liczba podana uzytkownikem: "+Integer.getInteger(userInput));
-        if ((lenghOfUserInput == 1 || lenghOfUserInput == 2) && isnumbersInUserInput) {
-            if (resultOfMultiplication == Integer.parseInt(userInput)) {
-                resultOfTesting = Boolean.TRUE;
-            }
-        }
+        Integer ansverFromUser = getValuesFromUserIntegerWithChek();
+        String strNumber1 = String.valueOf(getTaskString().charAt(0));
+        Integer number1 = Integer.parseInt(strNumber1);
+        String strNumber2 = String.valueOf(getTaskString().charAt(4));
+        Integer number2 = Integer.parseInt(strNumber2);
+        System.out.println("Liczba 1: "+number1+"; Liczba 2: "+number2+"; Odpoviedż: " + ansverFromUser);
+        Integer resultOfMultiplication = number1*number2;
+        System.out.println("ResultOfMultiplication: "+resultOfMultiplication);
+        if (resultOfMultiplication == ansverFromUser){
+            resultOfTesting = Boolean.TRUE;}
+        System.out.println("ResultOfTesting: " + resultOfTesting);
         return resultOfTesting;
     }
 

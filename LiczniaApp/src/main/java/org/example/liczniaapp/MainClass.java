@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Timer;
 import java.util.regex.Pattern;
 
 public class MainClass extends Application {
@@ -22,10 +23,48 @@ public class MainClass extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         launch();
 
-        System.exit(0);
+//        Runnable timerProcess = new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("Process1");
+//                TimerClass Timer = new TimerClass();
+//                try {
+//                    Timer.startTimera(500);
+//                } catch (InterruptedException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        };
+//        Runnable logikaProcess = new Runnable() {
+//            @Override
+//            public void run() {
+//                System.out.println("Process2");
+//                TimerClass Timer = new TimerClass();
+//
+//                while(Timer.getisTimerAktiveNow()==Boolean.TRUE){
+//                    System.out.println("Ok");
+//                }
+//            }
+//        };
+//        Thread timerThresd = new Thread(timerProcess);
+//        Thread logikaThread = new Thread(logikaProcess);
+//        timerThresd.start();
+//        logikaThread.start();
+
+
+
+//        MathLogicClass Logika = new MathLogicClass();
+//        Logika.createColectionRangeForFirstAndSekondNumberRandom();
+//        Logika.generatotTasksString();
+//        Logika.getValuesFromUser();
+//        Logika.functionCheckTaskBolean();
+//
+//        System.exit(0);
+
 
     }
+
 }
