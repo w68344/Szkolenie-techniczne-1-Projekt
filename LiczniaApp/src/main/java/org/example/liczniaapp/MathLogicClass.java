@@ -95,6 +95,7 @@ public class MathLogicClass {
                 colectionRangeFirstNumberRandom.add(i);
             }
         } else {
+            colectionRangeFirstNumberRandom.clear();
             colectionRangeFirstNumberRandom.add(getnumberForAllTable());
         }
         Collections.shuffle(colectionRangeFirstNumberRandom);

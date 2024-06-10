@@ -10,7 +10,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" onAction="#closeInfoUserWindow" text="Close" />
+              <MenuItem fx:id="closeInfoUserWindowMenuItem" mnemonicParsing="false" onAction="#closeInfoUserWindow" text="Close" />
             </items>
           </Menu>
         </menus>

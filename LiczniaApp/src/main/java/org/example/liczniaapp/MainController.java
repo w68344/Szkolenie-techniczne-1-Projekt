@@ -41,6 +41,7 @@ public class MainController {
         lblPunctsPlayer.setText("Poprawno/Błędnie = 0/0");
         lblGameLevel.setText(String.valueOf(UserClass.getStatikUserLevel()));
         userNameLbl.setText(UserClass.defoltUser.getNameAndSurnameForGUIByStatikUser());
+//        UserClass.userAnsverCorektVsUncorektStringOutprint();
 
 
     };
@@ -66,6 +67,7 @@ public class MainController {
             System.out.println(Logika.getValuesFromUserIntegerWithChek());
             txtAnswer.clear();
             chekAktion();
+            lblPunctsPlayer.setText(UserClass.userAnsverCorektVsUncorektStringOutprint(Logika.functionCheckTaskBolean()));
             lblTask.setText(Logika.generatotTasksString());}
         else {btnSendAnswer.setText("Koniec");
         btnStartGame.setText("Restart");
@@ -128,6 +130,9 @@ public class MainController {
         lblTimer.setText("");
         imgMem.setImage(new Image("logo300300Lipng.png"));
         txtAnswer.clear();
+        lblPunctsPlayer.setText(UserClass.resetCountrOfPointsWithPrint());
+//        lblPunctsPlayer.setText("Poprawno/Błędnie = 0/0");
+
     }
 
 

@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
@@ -34,8 +35,8 @@ public class InfoUserWindowController {
         lblLevelInfoUser.setText(String.valueOf(UserClass.getStatikUserLevel()));
     }
 
-
+public MenuItem closeInfoUserWindowMenuItem;
     public void closeInfoUserWindow(ActionEvent event) {
-
+        System.exit(0);
     }
 }

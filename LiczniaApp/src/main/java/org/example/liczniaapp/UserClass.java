@@ -109,4 +109,28 @@ public class UserClass {
     public Integer getLevelForGUIByStatikUser(){
         return getStatikUserLevel();
     }
+    //realizacja funkcja sprawdzająca ilosc poprawnych odpowiedzi za perid wyznaczony timerem
+    public static Integer counterAnswersFromUserByTime = 0;
+    public static Integer counterCorrectAnswerFromUserByTime = 0;
+    public static String resetCountrOfPointsWithPrint (){
+        String resultOfResetFunktionString = "Powodzenie parametry counterAnswersFromUserByTime = 0; and counterCorrectAnswerFromUserByTime = 0; ";
+        counterAnswersFromUserByTime = 0;
+        counterCorrectAnswerFromUserByTime = 0;
+        return "Poprawno/Błędnie = "+counterCorrectAnswerFromUserByTime+"/"+counterAnswersFromUserByTime;
+    }
+    public static String userAnsverCorektVsUncorektStringOutprint (Boolean ResultOfCheckFunktion) {
+        String progreshnOfUserCorrectVsUncorect = "Poprawno/Błędnie = "+counterCorrectAnswerFromUserByTime+"/"+counterAnswersFromUserByTime;
+        MathLogicClass Logika = new MathLogicClass();
+        if (ResultOfCheckFunktion==Boolean.TRUE) {
+            counterAnswersFromUserByTime += 1;
+            counterCorrectAnswerFromUserByTime+=1;
+            progreshnOfUserCorrectVsUncorect = "Poprawno/Błędnie = "+counterCorrectAnswerFromUserByTime+"/"+counterAnswersFromUserByTime;
+        }
+        else {
+            counterAnswersFromUserByTime +=1;
+            progreshnOfUserCorrectVsUncorect = "Poprawno/Błędnie = "+counterCorrectAnswerFromUserByTime+"/"+counterAnswersFromUserByTime;
+        }
+
+        return progreshnOfUserCorrectVsUncorect;
+    }
 }
