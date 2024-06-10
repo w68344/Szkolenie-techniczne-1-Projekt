@@ -22,7 +22,6 @@ public class MainController {
 
     //Tworzenia odpowiednich zmiennych zwądzanych z objektami GUI (grafic user interfejse)
     @FXML
-    public Label userNameLbl = new Label() ;
     public Label lblTask;
     public Label lblTimer;
     public TextField txtAnswer;
@@ -34,6 +33,18 @@ public class MainController {
     public ImageView imgMem = new ImageView();
     public Button btnSendAnswer = new Button();
     //tworzenie logiki gry bez względu na czas
+   //Inicjilizacja domyślnych zanaczeń dla default User
+    public Label lblPunctsPlayer;
+    public Label lblGameLevel;
+    public Label userNameLbl;
+    public void initialize(){
+        lblPunctsPlayer.setText("Poprawno/Błędnie = 0/0");
+        lblGameLevel.setText(String.valueOf(UserClass.getStatikUserLevel()));
+        userNameLbl.setText(UserClass.defoltUser.getNameAndSurnameForGUIByStatikUser());
+
+
+    };
+
     //Funkcja przypisywania wartości podanej użytkownikem
     //Również funkcja rejurencyjnie sprawdza poprawność odpowiedzi
     public void chekAktion ()
@@ -145,5 +156,9 @@ public class MainController {
     //Funkcja w górnym meni do tworzenia nowega okna do tworzenia nowego użytkownika
     public void createNewWindowForCreateNewUserMenuBtn(ActionEvent event) throws IOException {
         CreateNewUserWindowController.start();
+    }
+
+    public void menuItemInfoUserNewWindow(ActionEvent event) throws IOException {
+        InfoUserWindowController.start();
     }
 }
