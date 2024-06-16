@@ -12,6 +12,8 @@ module org.example.liczniaapp {
     requires com.almasb.fxgl.all;
     requires jdk.jdi;
     requires java.desktop;
+    requires java.sql;
+    requires java.management;
 
     opens org.example.liczniaapp to javafx.fxml;
     exports org.example.liczniaapp;

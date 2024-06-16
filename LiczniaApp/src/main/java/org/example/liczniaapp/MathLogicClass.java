@@ -21,51 +21,60 @@ public class MathLogicClass {
     //Getery oraz setery dla prywatnych wartości
 
     public void setValuesFromUser(String valuesFromUser) {
-        if (valuesFromUser == null){ this.valuesFromUser = "0";}
-        else {this.valuesFromUser = valuesFromUser;}
+        if (valuesFromUser == null) {
+            this.valuesFromUser = "0";
+        } else {
+            this.valuesFromUser = valuesFromUser;
+        }
 
     }
 
     public Integer getValuesFromUserIntegerWithChek() {
         return valuesFromUserIntegerWithChek;
     }
-    public Integer setValuesFromUserIntegerWithOutChek(){
+
+    public Integer setValuesFromUserIntegerWithOutChek() {
         this.valuesFromUserIntegerWithChek = Integer.parseInt(getVirableValuesFromUser());
         return valuesFromUserIntegerWithChek;
     }
+
     //Funkcja sprawdzająca poprawność wpisywania dannych użytkownikem oraz convertująca string do Integera
-    public Integer setValuesFromUserIntegerWithChek(String valueFromUserString){
+    public Integer setValuesFromUserIntegerWithChek(String valueFromUserString) {
 
         Pattern pattern = Pattern.compile(".*[a-zA-Z]+.*");
         Matcher matcher = pattern.matcher(valueFromUserString);
-        if (valueFromUserString.length()>3){
+        if (valueFromUserString.length() > 3) {
             System.out.println("Za długa odpowiedż");
             return valuesFromUserIntegerWithChek = 0;
-        }
-        else if (matcher.matches()){
+        } else if (matcher.matches()) {
             System.out.println("W odpowiedzi odnalezono litery, muszą być tylko liczby.");
             return valuesFromUserIntegerWithChek = 0;
         }
-        System.out.println("Liczba od funkcji setValuesFromUserIntegerWithChek: "+ valuesFromUserIntegerWithChek);
+        System.out.println("Liczba od funkcji setValuesFromUserIntegerWithChek: " + valuesFromUserIntegerWithChek);
 
         return valuesFromUserIntegerWithChek = Integer.parseInt(getVirableValuesFromUser());
 
     }
 
-    public String getTaskString() {return taskString;}
+    public String getTaskString() {
+        return taskString;
+    }
+
     public String getVirableValuesFromUser() {
         if (valuesFromUser == null) {
             return valuesFromUser = "0";
         } else {
             return valuesFromUser;
         }
-    };
+    }
+
+    ;
 
     public Integer getnumberForAllTable() {
         return this.numberForAllTable;
     }
 
-    public Integer setnumberForAllTable(Integer NumberForAllTable ) {
+    public Integer setnumberForAllTable(Integer NumberForAllTable) {
         this.numberForAllTable = NumberForAllTable;
         return this.numberForAllTable;
     }
@@ -140,14 +149,13 @@ public class MathLogicClass {
         }
 
         taskString = liczba1 + " * " + liczba2;
-        System.out.println("Zadanie: "+ taskString);
+        System.out.println("Zadanie: " + taskString);
         return taskString;
     }
 
     //Fukcja dla odczytu wartości od uzytkownika
 
-    public String getValuesFromUser ()
-    {
+    public String getValuesFromUser() {
         Scanner scaner = new Scanner(System.in);
         System.out.println("Podaj odpoviedż: ");
         setValuesFromUser(scaner.next());
@@ -155,7 +163,7 @@ public class MathLogicClass {
 //        System.out.println("Odpowiedż podana użytkownikem: " + valuesFromUser);
 
 
-       return valuesFromUser ;
+        return valuesFromUser;
     }
 
     //Funkcja sprawdzajáca czy podana odpowied od uzytkownika jest prawidwoła
@@ -166,16 +174,18 @@ public class MathLogicClass {
         Integer number1 = Integer.parseInt(strNumber1);
         String strNumber2 = String.valueOf(getTaskString().charAt(4));
         Integer number2 = Integer.parseInt(strNumber2);
-        System.out.println("Liczba 1: "+number1+"; Liczba 2: "+number2+"; Odpoviedż: " + ansverFromUser);
-        Integer resultOfMultiplication = number1*number2;
-        System.out.println("ResultOfMultiplication: "+resultOfMultiplication);
-        if (resultOfMultiplication == ansverFromUser){
-            resultOfTesting = Boolean.TRUE;}
+        System.out.println("Liczba 1: " + number1 + "; Liczba 2: " + number2 + "; Odpoviedż: " + ansverFromUser);
+        Integer resultOfMultiplication = number1 * number2;
+        System.out.println("ResultOfMultiplication: " + resultOfMultiplication);
+        if (resultOfMultiplication == ansverFromUser) {
+            resultOfTesting = Boolean.TRUE;
+        }
         System.out.println("ResultOfTesting: " + resultOfTesting);
         return resultOfTesting;
     }
+
     //funkcja zwraca domyślne parametry gry oraz informuje nas o tym w konsoli
-    public void setDefoltValuesForTaskGenerator(){
+    public void setDefoltValuesForTaskGenerator() {
 
         setnumberLowerForNumber(1);
         System.out.println("Parametr setnumberLowerForNumber zostaw udomyślniony");

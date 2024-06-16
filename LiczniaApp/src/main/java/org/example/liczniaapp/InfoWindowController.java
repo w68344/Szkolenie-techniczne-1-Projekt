@@ -14,18 +14,20 @@ public class InfoWindowController {
     //Otwiranie nowego okna
     @FXML
     Button closeBtnInfoWindow = new Button();
+    public static Stage stage2 = new Stage();
     public static void start() throws IOException {
-        Stage stage = new Stage();
+
         FXMLLoader fxmlLoader = new FXMLLoader(MainClass.class.getResource("InfoWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 850, 750);
-        stage.getIcons().add(new Image("logo300300Lipng.png"));
-        stage.setTitle("Info about Licznia App");
-        stage.setScene(scene);
-        stage.show();
+        Scene scene2 = new Scene(fxmlLoader.load(), 850, 750);
+        stage2.getIcons().add(new Image("logo300300Lipng.png"));
+        stage2.setTitle("Info about Licznia App");
+        stage2.setScene(scene2);
+        stage2.show();
     }
-//Zamykanie aplekacji
+//Zamykanie okna
     public void Close(ActionEvent event) {
-        System.exit(0);
+        stage2.close();
+
     }
 }
 

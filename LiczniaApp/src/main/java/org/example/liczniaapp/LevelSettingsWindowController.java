@@ -22,14 +22,22 @@ public class LevelSettingsWindowController {
     public Button updateValuesBtnLevelSettingsWindow = new Button();
     MathLogicClass Logika = new MathLogicClass();
     //Funkcja inicjacji okna z ustawieniami gry
+    public static Stage stageSettingsGame = new Stage();
     public static void start() throws IOException {
-        Stage stage = new Stage();
         FXMLLoader fxmlLoader = new FXMLLoader(MainClass.class.getResource("LevelSettingsWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 750);
-        stage.getIcons().add(new Image("logo300300Lipng.png"));
-        stage.setTitle("Lewel settings in LiczniaApp");
-        stage.setScene(scene);
-        stage.show();
+        stageSettingsGame.getIcons().add(new Image("logo300300Lipng.png"));
+        stageSettingsGame.setTitle("Lewel settings in LiczniaApp");
+        stageSettingsGame.setScene(scene);
+        stageSettingsGame.show();
+    }
+    public void closeThisWindow(){
+        stageSettingsGame.close();
+    }
+    public void closeAndSave() throws InterruptedException {
+        updateValuesFunkctionLevelSettingsWindow();
+        closeThisWindow();
+
     }
     //Funkcja wpisująca domyślne lub obecne wartości w ustawieniach gry
     public void loadDefoltValues(){
@@ -39,9 +47,9 @@ public class LevelSettingsWindowController {
     }
 
 
-    public void updateValuesFunkctionLevelSettingsWindow(ActionEvent event) throws InterruptedException {
+    public void updateValuesFunkctionLevelSettingsWindow() throws InterruptedException {
         //Metoda obpracovania wyjátków realizowana ręcznie poza seterem clasy MathLogikClass wiem że można użycz innych metod ale ja chcę widzieć jak działa validacja
-        //Viem że dla takiego można było by założyć osobny Interfejs, ale ze względu na nie wilki rozmiar aplikacji zrezygnowałem z tej myśli
+        //Viem że dla takiego można było by założyć osobny Interfejs, ale ze względu na nie wielki rozmiar aplikacji zrezygnowałem z tej myśli
         String numberFrom_TextAreaFrom = textAreaFrom.getText();
         Integer numberFrom_TextAreaFrom_Integer;
         try {

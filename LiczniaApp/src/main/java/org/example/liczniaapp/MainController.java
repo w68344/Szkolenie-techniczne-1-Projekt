@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class MainController {
@@ -33,52 +34,57 @@ public class MainController {
     public ImageView imgMem = new ImageView();
     public Button btnSendAnswer = new Button();
     //tworzenie logiki gry bez względu na czas
-   //Inicjilizacja domyślnych zanaczeń dla default User
+    //Inicjilizacja domyślnych zanaczeń dla default User
     public Label lblPunctsPlayer;
     public Label lblGameLevel;
     public Label userNameLbl;
-    public void initialize(){
+
+    public void initialize() throws SQLException {
+        DataBaseSQLite.connect();
+        DataBaseSQLite.createMainTable();
+        DataBaseSQLite.chekLenOfDBTable();
         lblPunctsPlayer.setText("Poprawno/Błędnie = 0/0");
         lblGameLevel.setText(String.valueOf(UserClass.getStatikUserLevel()));
         userNameLbl.setText(UserClass.defoltUser.getNameAndSurnameForGUIByStatikUser());
 //        UserClass.userAnsverCorektVsUncorektStringOutprint();
+    }
 
-
-    };
 
     //Funkcja przypisywania wartości podanej użytkownikem
     //Również funkcja rejurencyjnie sprawdza poprawność odpowiedzi
-    public void chekAktion ()
-    {
-        System.out.println("Test logiczny: "+Logika.functionCheckTaskBolean());
-        if(Logika.functionCheckTaskBolean() == Boolean.TRUE)
-        {
+    public void chekAktion() {
+        System.out.println("Test logiczny: " + Logika.functionCheckTaskBolean());
+        if (Logika.functionCheckTaskBolean() == Boolean.TRUE) {
             imgMem.setImage(new Image("noAnsr.jpg"));
-        }
-        else {
+        } else {
             imgMem.setImage(new Image("okAnsr.jpg"));
         }
     }
+
     //Ty dodałem funkcje blokowania wysyłania odpowidzi po ukończeniu działania stopera
     public void dtnSendAnswerAction(ActionEvent event) {
-        if(timeSeconds != 0){
+        if (timeSeconds != 0) {
             Logika.setValuesFromUser(txtAnswer.getText());
             Logika.setValuesFromUserIntegerWithChek(txtAnswer.getText());
             System.out.println(Logika.getValuesFromUserIntegerWithChek());
             txtAnswer.clear();
             chekAktion();
             lblPunctsPlayer.setText(UserClass.userAnsverCorektVsUncorektStringOutprint(Logika.functionCheckTaskBolean()));
-            lblTask.setText(Logika.generatotTasksString());}
-        else {btnSendAnswer.setText("Koniec");
-        btnStartGame.setText("Restart");
-        lblTask.setText("");
-        lblTimer.setText("");}
+            lblTask.setText(Logika.generatotTasksString());
+        } else {
+            btnSendAnswer.setText("Koniec");
+            btnStartGame.setText("Restart");
+            lblTask.setText("");
+            lblTimer.setText("");
+        }
 
     }
+
     //Kilka funkcji dla timera zrobionego jako animacja
     //временный лимит для быстрейшей розработки
     int timeSeconds = 10;
     Timeline timeline;
+
     public void initialized() {
         lblTimer.setText(formatTime(timeSeconds));
 
@@ -96,8 +102,11 @@ public class MainController {
         );
         timeline.playFromStart();
     }
-    public void timerStart (){initialized();
+
+    public void timerStart() {
+        initialized();
     }
+
     @FXML
     public void stopTimer() {
         timeSeconds = 1;
@@ -105,13 +114,16 @@ public class MainController {
 //
 
     }
+
     public String formatTime(int seconds) {
         int minutes = seconds / 60;
         int secs = seconds % 60;
         return String.format("%02d:%02d", minutes, secs);
     }
+
     //Pocątek gry za pomocą przycisku
     public void startTheGame(ActionEvent event) {
+        txtAnswer.clear();
         btnStartGame.setText("Start Game");
         btnSendAnswer.setText("Zapisz");
         //start timera
@@ -122,9 +134,10 @@ public class MainController {
         Logika.generatotTasksString();
         lblTask.setText(Logika.generatotTasksString());
     }
-   //Przedterminowy koniec gry
+
+    //Przedterminowy koniec gry
     public void stopGame(ActionEvent event) {
-        btnStartGame.setText("Restart");
+        btnStartGame.setText("Start Game");
         stopTimer();
         lblTask.setText("");
         lblTimer.setText("");
@@ -136,12 +149,12 @@ public class MainController {
     }
 
 
-
     //Fukcja do zapisywania dannych do baz dannych oraz zamknięcie aplikacji
     @FXML
     public void saveAndClose() {
         System.exit(0);
     }
+
     //Funkcja otwierania nowego okna
     @FXML
     public void openInfoStage(ActionEvent event) throws IOException {
@@ -152,12 +165,14 @@ public class MainController {
     public void openLevelSettingsWindow(ActionEvent event) throws IOException {
         LevelSettingsWindowController.start();
     }
+
     //Fukcja w górnym meni dla resetowania ustawień gry na domyślne
     public void setDefoltValuesForGeneratingTesks(ActionEvent event) {
         Logika.setDefoltValuesForTaskGenerator();
         imgMem.setImage(new Image("logo300300pngdef.png"));
 
     }
+
     //Funkcja w górnym meni do tworzenia nowega okna do tworzenia nowego użytkownika
     public void createNewWindowForCreateNewUserMenuBtn(ActionEvent event) throws IOException {
         CreateNewUserWindowController.start();

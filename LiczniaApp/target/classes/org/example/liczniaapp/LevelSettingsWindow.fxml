@@ -11,7 +11,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Zapisz i zamkni" />
+              <MenuItem mnemonicParsing="false" onAction="#closeAndSave" text="Zapisz i zamkni" />
             </items>
           </Menu>
         </menus>
@@ -95,7 +95,7 @@
             </VBox>
          </children>
       </HBox>
-      <Button fx:id="updateValuesBtnLevelSettingsWindow" mnemonicParsing="false" onAction="#updateValuesFunkctionLevelSettingsWindow"  text="Zapisz Parametry">
+      <Button fx:id="updateValuesBtnLevelSettingsWindow" mnemonicParsing="false" onAction="#updateValuesFunkctionLevelSettingsWindow" text="Zapisz Parametry">
          <font>
             <Font size="24.0" />
          </font>
